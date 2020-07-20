@@ -6,16 +6,19 @@ function Row({ column }) {
 	return (
 		<View style={styles.rowStyle}>
 			{column.map((data, index) => (
-				<Cell key={data} data={data} />
+				<Cell key={data.id} data={data} />
 			))}
 		</View>
 	);
 }
 
+// Add a player circle at the top right
+// p1 - red, p2 - green, p3 - blue p4 - yellow
 function Cell({ data }) {
 	return (
 		<View style={styles.cellStyle}>
-			<Text>{data}</Text>
+			<Text>{data.id}</Text>
+			{data.p1 && <Text>p1</Text>}
 		</View>
 	);
 }
@@ -30,7 +33,7 @@ class Grid extends Component {
 		return (
 			<View style={styles.gridContainer}>
 				{data.map((column, index) => (
-					<Row key={column} column={column} />
+					<Row key={index} column={column} />
 				))}
 			</View>
 		);
@@ -58,8 +61,8 @@ const mapStateToProps = (state) => {
 	};
 };
 
-const dispatchStateToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch) => {
 	return {};
 };
 
-export default connect(mapStateToProps, dispatchStateToProps)(Grid);
+export default connect(mapStateToProps, mapDispatchToProps)(Grid);

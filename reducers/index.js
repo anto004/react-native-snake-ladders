@@ -1,32 +1,81 @@
+import { MOVE_PLAYER_1 } from "../actions/index";
+
 const initialState = [
-	["Win", 14, 13, 12],
-	[11, 10, 9, 8],
-	[7, 6, 5, 4],
-	["Start", 1, 2, 3],
+	//[
+	//	{ id: 15, p1: false, p2: false, p3: false, p4: false },
+	//	{ id: 14, p1: false, p2: false, p3: false, p4: false },
+	//	{ id: 13, p1: false, p2: false, p3: false, p4: false },
+	//	{ id: 12, p1: false, p2: false, p3: false, p4: false },
+	//],
+	//[
+	//	{ id: 11, p1: false, p2: false, p3: false, p4: false },
+	//	{ id: 10, p1: false, p2: false, p3: false, p4: false },
+	//	{ id: 9, p1: false, p2: false, p3: false, p4: false },
+	//	{ id: 8, p1: false, p2: false, p3: false, p4: false },
+	//],
+	//[
+	//	{ id: 7, p1: false, p2: false, p3: false, p4: false },
+	//	{ id: 6, p1: false, p2: false, p3: false, p4: false },
+	//	{ id: 5, p1: false, p2: false, p3: false, p4: false },
+	//	{ id: 4, p1: false, p2: false, p3: false, p4: false },
+	//],
+	[
+		{ id: 0, p1: true, p2: false, p3: false, p4: false },
+		{ id: 1, p1: false, p2: false, p3: false, p4: false },
+		{ id: 2, p1: false, p2: false, p3: false, p4: false },
+		{ id: 3, p1: false, p2: false, p3: false, p4: false },
+	],
 ];
 
-// Move player from last row to 1st row in 1 2 3 4 5  ... sequence
-//const direction = [
-//  this.data[3][0],
-//  this.data[3][1],
-//  this.data[3][2],
-//  this.data[3][3],
-//  this.data[2][3],
-//  this.data[2][2],
-//  this.data[2][1],
-//  this.data[2][0],
-//  this.data[1][3],
-//  this.data[1][2],
-//  this.data[1][1],
-//  this.data[1][0],
-//  this.data[0][3],
-//  this.data[0][2],
-//  this.data[0][1],
-//  this.data[0][0],
-//];
-
 export default game = (state = initialState, action) => {
+	// Move player from last row to 1st row in 1 2 3 4 5  ... sequence
+	const direction = [
+		//{ row: 3, col: 0 },
+		//{ row: 3, col: 1 },
+		//{ row: 3, col: 2 },
+		//{ row: 3, col: 3 },
+
+		//{ row: 2, col: 3 },
+		//{ row: 2, col: 2 },
+		//{ row: 2, col: 1 },
+		//{ row: 2, col: 0 },
+
+		//{ row: 1, col: 3 },
+		//{ row: 1, col: 2 },
+		//{ row: 1, col: 1 },
+		//{ row: 1, col: 0 },
+
+		//{ row: 0, col: 3 },
+		//{ row: 0, col: 2 },
+		//{ row: 0, col: 1 },
+		//{ row: 0, col: 0 },
+
+		// Test values
+		{ row: 0, col: 0 },
+		{ row: 0, col: 1 },
+		{ row: 0, col: 2 },
+		{ row: 0, col: 3 },
+	];
+
+	const { player, fromPosition, toPosition } = action;
+	const dir = direction[toPosition];
+	const oldPosition = direction[fromPosition];
+	console.log("dir: ", dir, " toPosition: ", toPosition);
+
 	switch (action.type) {
+		case MOVE_PLAYER_1:
+			state[dir.row][dir.col] = {
+				...state[dir.row][dir.col],
+				p1: true,
+			};
+
+			state[oldPosition.row][oldPosition.col] = {
+				...state[oldPosition.row][oldPosition.col],
+				p1: false,
+			};
+
+			return [...state];
+
 		default:
 			return state;
 	}
