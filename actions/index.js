@@ -2,6 +2,7 @@ export const MOVE_PLAYER = "move_player";
 export const MOVE_PLAYER_1 = "move_player_1";
 export const MOVE_PLAYER_2 = "move_player_2";
 export const MOVE_PLAYER_TO_START = "move_player_to_start";
+export const RESET_PLAYERS = "reset_players";
 
 // TODO:
 // Two arguments fromPosition and toPosition
@@ -20,14 +21,6 @@ export const movePlayerToStart = (player, fromPosition, toPosition) => ({
 	toPosition,
 });
 
-export const movePlayer1 = (fromPosition, toPosition) => ({
-	type: MOVE_PLAYER_1,
-	fromPosition,
-	toPosition,
-});
-
-export const movePlayer2 = (fromPosition, toPosition) => ({
-	type: MOVE_PLAYER_2,
-	fromPosition,
-	toPosition,
+export const resetPlayers = () => ({
+	type: RESET_PLAYERS,
 });

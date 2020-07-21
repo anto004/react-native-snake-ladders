@@ -3,6 +3,7 @@ import {
 	MOVE_PLAYER_1,
 	MOVE_PLAYER_2,
 	MOVE_PLAYER_TO_START,
+	RESET_PLAYERS,
 } from "../actions/index";
 
 export const RED = "red";
@@ -144,6 +145,18 @@ export default game = (state = initialState, action) => {
 			};
 			console.log("state", state);
 			return [...state];
+
+		case RESET_PLAYERS:
+			return state.map((rows, row) =>
+				rows.map((cell, column) => {
+					const obj = state[row][column];
+					obj[RED] = false;
+					obj[GREEN] = false;
+					obj[BLUE] = false;
+					obj[YELLOW] = false;
+					return obj;
+				})
+			);
 
 		default:
 			return state;

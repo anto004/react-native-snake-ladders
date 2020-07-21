@@ -3,10 +3,10 @@ import { View, StyleSheet } from "react-native";
 import { Button, Text } from "react-native-elements";
 
 // Todo: Create reusable buttons
-function Header({ onStart }) {
+function Header({ onStart, onReset }) {
 	return (
 		<View style={styles.headerContainer}>
-			<Button type="outline" raised={true} title="Reset" />
+			<Button type="outline" raised={true} title="Reset" onPress={onReset} />
 			<Text h4> Snake and Ladders </Text>
 			<Button type="outline" raised={true} title="Start" onPress={onStart} />
 		</View>

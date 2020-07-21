@@ -13,7 +13,7 @@ import Grid from "./Grid";
 import Dice from "./Dice";
 import Players from "./Players";
 import Header from "./Header";
-import { movePlayer, movePlayerToStart } from "../actions";
+import { movePlayer, movePlayerToStart, resetPlayers } from "../actions";
 import { getRandomInt } from "../utils/random";
 import { GREEN } from "../reducers";
 
@@ -100,7 +100,6 @@ class Game extends Component {
 
 		// Place all players on Start
 		players.map((player) => {
-			console.log("player: ", player);
 			dispatchMovePlayerToStart(player.player, 0, 0);
 		});
 
@@ -115,11 +114,20 @@ class Game extends Component {
 		// Start until dice is 1
 	};
 
+	onReset = () => {
+		const { dispatchResetPlayers } = this.props;
+
+		// Reset all players
+		dispatchResetPlayers();
+
+		this.setState({ numberPlayers: 1 });
+	};
+
 	render() {
 		const { players, dice, numberPlayers, winner } = this.state;
 		return (
 			<View style={styles.gameContainer}>
-				<Header onStart={this.onStart} />
+				<Header onStart={this.onStart} onReset={this.onReset} />
 				<View>
 					<View style={styles.numberPlayersContainer}>
 						<Text style={styles.numberPlayerTextStyle}>
@@ -202,6 +210,8 @@ const mapDispatchToProps = (dispatch) => {
 
 		dispatchMovePlayer: (player, fromPosition, toPosition) =>
 			dispatch(movePlayer(player, fromPosition, toPosition)),
+
+		dispatchResetPlayers: () => dispatch(resetPlayers()),
 	};
 };
 

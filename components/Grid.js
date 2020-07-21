@@ -35,7 +35,7 @@ function Row({ row }) {
 
 function Cell({ column }) {
 	return (
-		<View style={styles.cellContainer}>
+		<View key={column.id} style={styles.cellContainer}>
 			<View style={styles.cellPlayerContainer}>
 				<RenderPlayers column={column} />
 			</View>
