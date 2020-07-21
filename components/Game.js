@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import {
 	View,
-	Text,
 	StyleSheet,
-	Button,
 	TouchableOpacity,
 	Dimensions,
+	TextInput,
 } from "react-native";
 import { connect } from "react-redux";
+import { Text } from "react-native-elements";
 import Grid from "./Grid";
 import Dice from "./Dice";
 import Players from "./Players";
@@ -16,15 +16,17 @@ import { getRandomInt } from "../utils/random";
 
 const DICE_MAX = 6;
 const SCREEN_WIDTH = Dimensions.get("window").width;
+
 class Game extends Component {
 	constructor(props) {
 		super(props);
-	}
 
-	state = {
-		position: 0,
-		dice: 0,
-	};
+		this.state = {
+			position: 0,
+			dice: 0,
+			numberPlayers: 1,
+		};
+	}
 
 	movePlayerP1 = () => {
 		// Update grid, dispatch action
@@ -36,12 +38,28 @@ class Game extends Component {
 		this.setState({ dice: random });
 	};
 
+	onChangePlayerNumbers = (n) => {
+		console.log("N", n);
+		//this.setState({ numberPlayers: n });
+	};
+
 	render() {
-		const { dice } = this.state;
+		const { dice, numberPlayers } = this.state;
 		return (
 			<View style={styles.gameContainer}>
 				<View>
-					<Text>Game Component</Text>
+					<View style={styles.numberPlayersContainer}>
+						<Text style={styles.numberPlayerTextStyle}>
+							Select Number of Players
+						</Text>
+						<TextInput
+							style={styles.inputStyle}
+							value={numberPlayers.toString()}
+							onChange={(e) => onChangePlayerNumbers(e)}
+						/>
+					</View>
+				</View>
+				<View>
 					<Grid />
 					<TouchableOpacity onPress={this.movePlayerP1}>
 						<Text>Move p1</Text>
@@ -75,6 +93,22 @@ const styles = StyleSheet.create({
 		marginTop: 10,
 		padding: 25,
 		backgroundColor: "yellow",
+	},
+
+	numberPlayersContainer: {
+		flexDirection: "row",
+		alignItems: "center",
+		justifyContent: "center",
+	},
+	numberPlayerTextStyle: {
+		fontSize: 17,
+		marginRight: 5,
+	},
+	inputStyle: {
+		height: 30,
+		width: 30,
+		borderWidth: 1,
+		textAlign: "center",
 	},
 });
 
