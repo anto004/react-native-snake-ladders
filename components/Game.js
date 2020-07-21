@@ -39,8 +39,9 @@ class Game extends Component {
 	};
 
 	onChangePlayerNumbers = (n) => {
-		console.log("N", n);
-		//this.setState({ numberPlayers: n });
+		if (!Number.isNaN(Number(n)) && Number(n) < 5) {
+			this.setState({ numberPlayers: n });
+		}
 	};
 
 	render() {
@@ -50,12 +51,12 @@ class Game extends Component {
 				<View>
 					<View style={styles.numberPlayersContainer}>
 						<Text style={styles.numberPlayerTextStyle}>
-							Select Number of Players
+							Select Number of Players(1-4)
 						</Text>
 						<TextInput
 							style={styles.inputStyle}
 							value={numberPlayers.toString()}
-							onChange={(e) => onChangePlayerNumbers(e)}
+							onChangeText={(text) => this.onChangePlayerNumbers(text)}
 						/>
 					</View>
 				</View>
