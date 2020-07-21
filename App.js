@@ -7,7 +7,13 @@ import reducer from "./reducers";
 import Game from "./components/Game";
 
 export default function App() {
-	const store = createStore(reducer);
+	/* eslint-disable no-underscore-dangle */
+	const store = createStore(
+		reducer /* preloadedState, */,
+		window.__REDUX_DEVTOOLS_EXTENSION__ &&
+			window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__()
+	);
+	/* eslint-enable */
 
 	return (
 		<Provider store={store}>

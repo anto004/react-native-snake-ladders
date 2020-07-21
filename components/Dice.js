@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { View, Text, StyleSheet } from "react-native";
+import { FontAwesome5 } from "@expo/vector-icons";
 import { Button } from "react-native-elements";
 
 function Dice({ dice, rollDice }) {
@@ -11,6 +12,13 @@ function Dice({ dice, rollDice }) {
 				raised={true}
 				onPress={rollDice}
 				buttonStyle={styles.buttonStyle}
+				titleStyle={styles.textStyle}
+			/>
+			<FontAwesome5
+				name="dice"
+				size={24}
+				color="black"
+				style={styles.iconStyle}
 			/>
 		</View>
 	);
@@ -21,6 +29,13 @@ const styles = StyleSheet.create({
 		width: 50,
 		height: 50,
 		margin: 0,
+	},
+	textStyle: {
+		fontWeight: "bold",
+		fontSize: 25,
+	},
+	iconStyle: {
+		margin: 6,
 	},
 });
 

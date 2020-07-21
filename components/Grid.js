@@ -3,20 +3,21 @@ import { View, StyleSheet } from "react-native";
 import { Text } from "react-native-elements";
 import { connect } from "react-redux";
 import Player from "./Player";
+import { RED, GREEN, BLUE, YELLOW } from "../reducers/index";
 
 function RenderPlayers({ column }) {
 	const players = Object.entries(column).map(([key, value]) => {
-		if (key === "p1" && column[key]) {
+		if (key === RED && column[key]) {
 			return <Player key={key} color="red" />;
 		}
-		if (key === "p2" && column[key]) {
-			return <Player key={key} color="green" />;
+		if (key === GREEN && column[key]) {
+			return <Player key={key} color={GREEN} />;
 		}
-		if (key === "p3" && column[key]) {
-			return <Player key={key} color="blue" />;
+		if (key === BLUE && column[key]) {
+			return <Player key={key} color={BLUE} />;
 		}
-		if (key === "p4" && column[key]) {
-			return <Player key={key} color="yellow" />;
+		if (key === YELLOW && column[key]) {
+			return <Player key={key} color={YELLOW} />;
 		}
 	});
 	return players;
