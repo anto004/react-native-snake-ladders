@@ -11,6 +11,7 @@ import { Text } from "react-native-elements";
 import Grid from "./Grid";
 import Dice from "./Dice";
 import Players from "./Players";
+import Header from "./Header";
 import { movePlayer1 } from "../actions";
 import { getRandomInt } from "../utils/random";
 
@@ -48,6 +49,7 @@ class Game extends Component {
 		const { dice, numberPlayers } = this.state;
 		return (
 			<View style={styles.gameContainer}>
+				<Header />
 				<View>
 					<View style={styles.numberPlayersContainer}>
 						<Text style={styles.numberPlayerTextStyle}>
@@ -82,8 +84,8 @@ class Game extends Component {
 const styles = StyleSheet.create({
 	gameContainer: {
 		flex: 1,
-		justifyContent: "center",
-		alignItems: "center",
+		//justifyContent: "center",
+		//alignItems: "center",
 	},
 
 	bottomContainer: {
