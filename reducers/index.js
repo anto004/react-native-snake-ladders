@@ -135,7 +135,7 @@ export default game = (state = initialState, action) => {
 				...state[oldPosition.row][oldPosition.col],
 				[player]: false,
 			};
-			console.log("state: ", state);
+			//console.log("state: ", state);
 			return [...state];
 
 		case MOVE_PLAYER_TO_START:
@@ -143,7 +143,7 @@ export default game = (state = initialState, action) => {
 				...state[newPosition.row][newPosition.col],
 				[player]: true,
 			};
-			console.log("state", state);
+			//console.log("state", state);
 			return [...state];
 
 		case RESET_PLAYERS:
