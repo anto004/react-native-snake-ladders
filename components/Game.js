@@ -15,7 +15,7 @@ import Header from "./Header";
 import { movePlayer1 } from "../actions";
 import { getRandomInt } from "../utils/random";
 
-const DICE_MAX = 6;
+const DICE_MAX = 3;
 const SCREEN_WIDTH = Dimensions.get("window").width;
 
 class Game extends Component {
@@ -24,7 +24,7 @@ class Game extends Component {
 
 		this.state = {
 			position: 0,
-			dice: 0,
+			dice: 3,
 			numberPlayers: 1,
 		};
 	}
@@ -45,6 +45,14 @@ class Game extends Component {
 		}
 	};
 
+	onStart = () => {
+		// Get number of players
+		// Add them to stack
+		// Play each player's turn
+		// Roll dice
+		// Start until dice is 1
+	};
+
 	render() {
 		const { dice, numberPlayers } = this.state;
 		return (
@@ -62,7 +70,7 @@ class Game extends Component {
 						/>
 					</View>
 				</View>
-				<View>
+				<View style={styles.gridContainer}>
 					<Grid />
 					<TouchableOpacity onPress={this.movePlayerP1}>
 						<Text>Move p1</Text>
@@ -87,7 +95,11 @@ const styles = StyleSheet.create({
 		//justifyContent: "center",
 		//alignItems: "center",
 	},
-
+	gridContainer: {
+		alignItems: "center",
+		justifyContent: "center",
+		margin: 10,
+	},
 	bottomContainer: {
 		flexDirection: "row",
 		alignItems: "center",

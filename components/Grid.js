@@ -1,24 +1,48 @@
 import React, { Component } from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, StyleSheet } from "react-native";
+import { Text } from "react-native-elements";
 import { connect } from "react-redux";
+import Player from "./Player";
 
-function Row({ column }) {
+function RenderPlayers({ column }) {
+	const players = Object.entries(column).map(([key, value]) => {
+		if (key === "p1" && column[key]) {
+			return <Player key={key} color="red" />;
+		}
+		if (key === "p2" && column[key]) {
+			return <Player key={key} color="green" />;
+		}
+		if (key === "p3" && column[key]) {
+			return <Player key={key} color="blue" />;
+		}
+		if (key === "p4" && column[key]) {
+			return <Player key={key} color="yellow" />;
+		}
+	});
+	return players;
+}
+
+function Row({ row }) {
 	return (
 		<View style={styles.rowStyle}>
-			{column.map((data, index) => (
-				<Cell key={data.id} data={data} />
+			{row.map((column, index) => (
+				<Cell key={column.id} column={column} />
 			))}
 		</View>
 	);
 }
 
-// Add a player circle at the top right
-// p1 - red, p2 - green, p3 - blue p4 - yellow
-function Cell({ data }) {
+function Cell({ column }) {
 	return (
-		<View style={styles.cellStyle}>
-			<Text>{data.id}</Text>
-			{data.p1 && <Text>p1</Text>}
+		<View style={styles.cellContainer}>
+			<View style={styles.cellPlayerContainer}>
+				<RenderPlayers column={column} />
+			</View>
+			<View style={styles.cellIdStyle}>
+				<Text h4 style={styles.textIdStyle}>
+					{column.id}
+				</Text>
+			</View>
 		</View>
 	);
 }
@@ -29,11 +53,11 @@ class Grid extends Component {
 	}
 
 	render() {
-		const { data } = this.props;
+		const { grid } = this.props;
 		return (
 			<View style={styles.gridContainer}>
-				{data.map((column, index) => (
-					<Row key={index} column={column} />
+				{grid.map((row, index) => (
+					<Row key={index} row={row} />
 				))}
 			</View>
 		);
@@ -42,7 +66,8 @@ class Grid extends Component {
 
 const styles = StyleSheet.create({
 	gridContainer: {
-		width: 220,
+		width: 300,
+		backgroundColor: "white",
 	},
 	rowStyle: {
 		// flex: 1,
@@ -50,14 +75,29 @@ const styles = StyleSheet.create({
 		alignItems: "center",
 		justifyContent: "space-around",
 	},
-	cellStyle: {
+	cellContainer: {
 		flex: 1,
-		margin: 10,
+		height: 60,
+		borderWidth: 1,
+		backgroundColor: "purple",
+	},
+	cellPlayerContainer: {
+		flexDirection: "row",
+		justifyContent: "flex-end",
+	},
+	cellIdStyle: {
+		flex: 1,
+		justifyContent: "center",
+		alignItems: "center",
+		margin: 4,
+	},
+	textIdStyle: {
+		margin: 0,
 	},
 });
 const mapStateToProps = (state) => {
 	return {
-		data: state,
+		grid: state,
 	};
 };
 

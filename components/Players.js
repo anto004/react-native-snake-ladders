@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { FontAwesome5 } from "@expo/vector-icons";
 
+// Call Player HOC with different colors
 // Pass an array of players
 function Players({ players }) {
 	const playerColor = ["red", "green", "blue", "yellow"];
