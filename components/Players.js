@@ -1,26 +1,33 @@
 import React, { Component } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { FontAwesome5 } from "@expo/vector-icons";
+import Player from "./Player";
 
-// Call Player HOC with different colors
+function PlayerWithArrow({ color, playersTurn }) {
+	return (
+		<View style={styles.playerStyle}>
+			<Player color={color} />
+			{playersTurn === color && (
+				<View style={styles.iconStyle}>
+					<FontAwesome5 name="arrow-up" size={20} color="black" />
+				</View>
+			)}
+		</View>
+	);
+}
 // Pass an array of players
-function Players({ players }) {
-	const playerColor = ["red", "green", "blue", "yellow"];
+// playerColors ["red", "green", "blue", "yellow"];
+function Players({ players, playersTurn }) {
 	return (
 		<View style={styles.playersContainer}>
-			{players.map((player, index) => (
-				<View key={index}>
-					<View
-						style={[
-							styles.playerStyle,
-							{ backgroundColor: playerColor[index] },
-						]}
-						key={index}
-					></View>
-					<FontAwesome5 name="arrow-up" size={24} color="black" />
-					<Text>Your turn</Text>
-				</View>
-			))}
+			{players[0] && <PlayerWithArrow color="red" playersTurn={playersTurn} />}
+			{players[1] && (
+				<PlayerWithArrow color="green" playersTurn={playersTurn} />
+			)}
+			{players[2] && <PlayerWithArrow color="blue" playersTurn={playersTurn} />}
+			{players[3] && (
+				<PlayerWithArrow color="yellow" playersTurn={playersTurn} />
+			)}
 		</View>
 	);
 }
@@ -33,10 +40,14 @@ const styles = StyleSheet.create({
 		backgroundColor: "purple",
 	},
 	playerStyle: {
-		height: 13.5,
-		width: 15,
-		borderRadius: 30,
-		margin: 4,
+		justifyContent: "flex-start",
+		alignItems: "center",
+		padding: 2,
+	},
+	iconStyle: {
+		padding: 1,
+		justifyContent: "center",
+		alignItems: "center",
 	},
 });
 

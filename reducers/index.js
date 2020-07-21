@@ -1,4 +1,4 @@
-import { MOVE_PLAYER_1 } from "../actions/index";
+import { MOVE_PLAYER_1, MOVE_PLAYER_2 } from "../actions/index";
 
 const initialState = [
 	[
@@ -30,31 +30,31 @@ const initialState = [
 export default game = (state = initialState, action) => {
 	// Move player from last row to 1st row in 1 2 3 4 5  ... sequence
 	const direction = [
-		//{ row: 3, col: 0 },
-		//{ row: 3, col: 1 },
-		//{ row: 3, col: 2 },
-		//{ row: 3, col: 3 },
+		{ row: 3, col: 0 },
+		{ row: 3, col: 1 },
+		{ row: 3, col: 2 },
+		{ row: 3, col: 3 },
 
-		//{ row: 2, col: 3 },
-		//{ row: 2, col: 2 },
-		//{ row: 2, col: 1 },
-		//{ row: 2, col: 0 },
+		{ row: 2, col: 3 },
+		{ row: 2, col: 2 },
+		{ row: 2, col: 1 },
+		{ row: 2, col: 0 },
 
-		//{ row: 1, col: 3 },
-		//{ row: 1, col: 2 },
-		//{ row: 1, col: 1 },
-		//{ row: 1, col: 0 },
+		{ row: 1, col: 3 },
+		{ row: 1, col: 2 },
+		{ row: 1, col: 1 },
+		{ row: 1, col: 0 },
 
-		//{ row: 0, col: 3 },
-		//{ row: 0, col: 2 },
-		//{ row: 0, col: 1 },
-		//{ row: 0, col: 0 },
+		{ row: 0, col: 3 },
+		{ row: 0, col: 2 },
+		{ row: 0, col: 1 },
+		{ row: 0, col: 0 },
 
 		// Test values
-		{ row: 0, col: 0 },
-		{ row: 0, col: 1 },
-		{ row: 0, col: 2 },
-		{ row: 0, col: 3 },
+		//{ row: 0, col: 0 },
+		//{ row: 0, col: 1 },
+		//{ row: 0, col: 2 },
+		//{ row: 0, col: 3 },
 	];
 
 	const { player, fromPosition, toPosition } = action;
@@ -71,6 +71,19 @@ export default game = (state = initialState, action) => {
 			state[oldPosition.row][oldPosition.col] = {
 				...state[oldPosition.row][oldPosition.col],
 				p1: false,
+			};
+
+			return [...state];
+
+		case MOVE_PLAYER_2:
+			state[newPosition.row][newPosition.col] = {
+				...state[newPosition.row][newPosition.col],
+				p2: true,
+			};
+
+			state[oldPosition.row][oldPosition.col] = {
+				...state[oldPosition.row][oldPosition.col],
+				p2: false,
 			};
 
 			return [...state];
