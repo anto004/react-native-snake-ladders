@@ -2,8 +2,11 @@ import React, { Component } from "react";
 import { View, Text, StyleSheet, Button, TouchableOpacity } from "react-native";
 import { connect } from "react-redux";
 import Grid from "./Grid";
+import Dice from "./Dice";
 import { movePlayer1 } from "../actions";
+import { getRandomInt } from "../utils/random";
 
+const DICE_MAX = 6;
 class Game extends Component {
 	constructor(props) {
 		super(props);
@@ -11,6 +14,7 @@ class Game extends Component {
 
 	state = {
 		position: 0,
+		dice: 0,
 	};
 
 	movePlayerP1 = () => {
@@ -18,7 +22,13 @@ class Game extends Component {
 		this.props.dispatchMovePlayer1(0, 2);
 	};
 
+	rollDice = () => {
+		const random = getRandomInt(DICE_MAX);
+		this.setState({ dice: random });
+	};
+
 	render() {
+		const { dice } = this.state;
 		return (
 			<View style={styles.gameContainer}>
 				<Text>Game Component</Text>
@@ -29,6 +39,10 @@ class Game extends Component {
 				<TouchableOpacity onPress={this.movePlayerP2}>
 					<Text>Move p2</Text>
 				</TouchableOpacity>
+
+				<View>
+					<Dice dice={dice} rollDice={this.rollDice} />
+				</View>
 			</View>
 		);
 	}

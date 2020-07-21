@@ -58,14 +58,13 @@ export default game = (state = initialState, action) => {
 	];
 
 	const { player, fromPosition, toPosition } = action;
-	const dir = direction[toPosition];
+	const newPosition = direction[toPosition];
 	const oldPosition = direction[fromPosition];
-	console.log("dir: ", dir, " toPosition: ", toPosition);
 
 	switch (action.type) {
 		case MOVE_PLAYER_1:
-			state[dir.row][dir.col] = {
-				...state[dir.row][dir.col],
+			state[newPosition.row][newPosition.col] = {
+				...state[newPosition.row][newPosition.col],
 				p1: true,
 			};
 

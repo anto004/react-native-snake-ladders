@@ -7,23 +7,23 @@ import reducer from "./reducers";
 import Game from "./components/Game";
 
 export default function App() {
-  const store = createStore(reducer);
+	const store = createStore(reducer);
 
-  return (
-    <Provider store={store}>
-      <View style={styles.container}>
-        <StatusBar style="auto" />
-        <Game />
-      </View>
-    </Provider>
-  );
+	return (
+		<Provider store={store}>
+			<View style={styles.container}>
+				<StatusBar style="auto" />
+				<Game />
+			</View>
+		</Provider>
+	);
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
+	container: {
+		flex: 1,
+		backgroundColor: "#fff",
+		alignItems: "center",
+		justifyContent: "center",
+	},
 });
