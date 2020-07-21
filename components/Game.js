@@ -15,7 +15,7 @@ import Players from "./Players";
 import Header from "./Header";
 import { movePlayer, movePlayerToStart, resetPlayers } from "../actions";
 import { getRandomInt } from "../utils/random";
-import { GREEN } from "../reducers";
+import { GREEN, RED } from "../reducers";
 
 const DICE_MAX = 3;
 const SCREEN_WIDTH = Dimensions.get("window").width;
@@ -26,23 +26,14 @@ class Game extends Component {
 		super(props);
 
 		this.state = {
-			position: 0,
 			dice: 3,
 			numberPlayers: 1,
 			winner: "yellow",
 			players: [{ player: "red", position: 0 }],
-			redTurn: false,
-			greenTurn: false,
-			blueTurn: false,
-			yellowTurn: false,
 			currentPlayerIndex: 0,
+			playersTurn: "",
 		};
 	}
-
-	movePlayerP1 = () => {
-		// Update grid, dispatch action
-		this.props.dispatchMovePlayer1(0, 2);
-	};
 
 	onChangePlayerNumbers = (n) => {
 		const copy = [];
@@ -71,16 +62,15 @@ class Game extends Component {
 	// TODO:
 	// Check winner reaches exactly cell id 15
 
-	moveCurrentPlayer = (toPosition) => {
-		const { players, dice, currentPlayerIndex } = this.state;
-		const { dispatchMovePlayer } = this.props;
+	moveCurrentPlayer = (dice) => {
+		const { players, currentPlayerIndex } = this.state;
+		const { dispatchMovePlayer, dispatchMovePlayerToStart } = this.props;
 
 		const currentPlayerObj = this.getCurrentPlayer();
 		console.log("currentPlayerObj", currentPlayerObj);
 		const currentPlayer = currentPlayerObj.player;
 		const fromPosition = currentPlayerObj.position;
-
-		toPosition = fromPosition + toPosition;
+		const toPosition = fromPosition + dice;
 
 		if (fromPosition === 0) {
 			// Move only when dice returns 1
@@ -105,7 +95,6 @@ class Game extends Component {
 			return player;
 		});
 
-		console.log("new Position: ", copy);
 		this.setState({ players: copy });
 
 		// Set next player as current player
@@ -139,7 +128,6 @@ class Game extends Component {
 	}
 
 	onStart = () => {
-		// Get number of players
 		const { players, numberPlayers } = this.state;
 		const { dispatchMovePlayerToStart } = this.props;
 
@@ -148,15 +136,11 @@ class Game extends Component {
 			dispatchMovePlayerToStart(player.player, 0, 0);
 		});
 
+		// Red is the first player
+		this.setState({ playersTurn: RED });
+
 		// Pop item when timer runs out
 		// Call clearTimout when a player moves before timer runs out
-
-		// Play each player's turn
-		// Dispatch action to reducer
-		// Test Move Player
-
-		// Roll dice
-		// Start until dice is 1
 	};
 
 	onReset = () => {
@@ -165,11 +149,23 @@ class Game extends Component {
 		// Reset all players
 		dispatchResetPlayers();
 
-		this.setState({ numberPlayers: 1 });
+		this.setState({
+			numberPlayers: 1,
+			players: [{ player: "red", position: 0 }],
+			playersTurn: "",
+		});
 	};
 
+	componentDidUpdate(prevProps, prevState) {
+		// Show Player's turn arrow
+		if (this.state.currentPlayerIndex !== prevState.currentPlayerIndex) {
+			const currentPlayer = this.getCurrentPlayer();
+			this.setState({ playersTurn: currentPlayer.player });
+		}
+	}
+
 	render() {
-		const { players, dice, numberPlayers, winner } = this.state;
+		const { players, dice, numberPlayers, playersTurn, winner } = this.state;
 		console.log("currentPlayer: ", this.state.currentPlayerIndex);
 		return (
 			<View style={styles.gameContainer}>
@@ -191,15 +187,10 @@ class Game extends Component {
 				</View>
 
 				<View style={styles.bottomContainer}>
-					<Players players={players} playersTurn="yellow" />
+					<Players players={players} playersTurn={playersTurn} />
 					{winner !== "" && <Text>{`Hurray! ${winner} is the winner`}</Text>}
 					<Dice dice={dice} rollDice={this.rollDice} />
 				</View>
-				{/*<Button
-					type="outline"
-					title="Move Current Player"
-					onPress={this.moveCurrentPlayer}
-				/>*/}
 			</View>
 		);
 	}
