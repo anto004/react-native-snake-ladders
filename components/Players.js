@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { View, Text, StyleSheet } from "react-native";
+import { FontAwesome5 } from "@expo/vector-icons";
 
 // Pass an array of players
 function Players({ players }) {
@@ -7,10 +8,17 @@ function Players({ players }) {
 	return (
 		<View style={styles.playersContainer}>
 			{players.map((player, index) => (
-				<View
-					style={[styles.playerStyle, { backgroundColor: playerColor[index] }]}
-					key={index}
-				></View>
+				<View key={index}>
+					<View
+						style={[
+							styles.playerStyle,
+							{ backgroundColor: playerColor[index] },
+						]}
+						key={index}
+					></View>
+					<FontAwesome5 name="arrow-up" size={24} color="black" />
+					<Text>Your turn</Text>
+				</View>
 			))}
 		</View>
 	);
