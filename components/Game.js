@@ -28,7 +28,7 @@ class Game extends Component {
 		this.state = {
 			dice: 3,
 			numberPlayers: 1,
-			winner: "yellow",
+			winner: "",
 			players: [{ player: "red", position: 0 }],
 			currentPlayerIndex: 0,
 			playersTurn: "",
@@ -71,6 +71,14 @@ class Game extends Component {
 		const currentPlayer = currentPlayerObj.player;
 		const fromPosition = currentPlayerObj.position;
 		const toPosition = fromPosition + dice;
+
+		if (toPosition > 15) {
+			return;
+		}
+
+		if (toPosition === 15) {
+			this.setState({ winner: currentPlayer });
+		}
 
 		if (fromPosition === 0) {
 			// Move only when dice returns 1
@@ -188,7 +196,11 @@ class Game extends Component {
 
 				<View style={styles.bottomContainer}>
 					<Players players={players} playersTurn={playersTurn} />
-					{winner !== "" && <Text>{`Hurray! ${winner} is the winner`}</Text>}
+					{winner !== "" && (
+						<Text
+							style={styles.winnerTextStyle}
+						>{`Hurray! ${winner.toUpperCase()} is the winner`}</Text>
+					)}
 					<Dice dice={dice} rollDice={this.rollDice} />
 				</View>
 			</View>
@@ -231,6 +243,10 @@ const styles = StyleSheet.create({
 		width: 30,
 		borderWidth: 1,
 		textAlign: "center",
+	},
+	winnerTextStyle: {
+		fontSize: 20,
+		fontWeight: "bold",
 	},
 });
 
