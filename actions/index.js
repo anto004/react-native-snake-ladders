@@ -1,11 +1,8 @@
 export const MOVE_PLAYER = "move_player";
-export const MOVE_PLAYER_1 = "move_player_1";
-export const MOVE_PLAYER_2 = "move_player_2";
 export const MOVE_PLAYER_TO_START = "move_player_to_start";
 export const RESET_PLAYERS = "reset_players";
 
-// TODO:
-// Two arguments fromPosition and toPosition
+// Arguments fromPosition and toPosition
 // toPosition is the sum of the fromPosition and the dice output
 export const movePlayer = (player, fromPosition, toPosition) => ({
 	type: MOVE_PLAYER,

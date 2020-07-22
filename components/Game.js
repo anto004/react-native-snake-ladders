@@ -1,12 +1,5 @@
 import React, { Component } from "react";
-import {
-	View,
-	StyleSheet,
-	TouchableOpacity,
-	Dimensions,
-	TextInput,
-	Button,
-} from "react-native";
+import { View, StyleSheet, Dimensions, TextInput } from "react-native";
 import { connect } from "react-redux";
 import { Text } from "react-native-elements";
 import timer from "react-native-timer";
@@ -17,7 +10,7 @@ import Header from "./Header";
 import Timer from "./Timer";
 import { movePlayer, movePlayerToStart, resetPlayers } from "../actions";
 import { getRandomInt } from "../utils/random";
-import { GREEN, RED } from "../reducers";
+import { RED } from "../reducers";
 
 const DICE_MAX = 3;
 const SCREEN_WIDTH = Dimensions.get("window").width;
@@ -149,7 +142,7 @@ class Game extends Component {
 		const { players, numberPlayers } = this.state;
 		const { dispatchMovePlayerToStart } = this.props;
 
-		// Place all players on Start
+		// Place all players on Start cell
 		players.map((player) => {
 			dispatchMovePlayerToStart(player.player, 0, 0);
 		});
@@ -206,7 +199,7 @@ class Game extends Component {
 			winner,
 			seconds,
 		} = this.state;
-		console.log("currentPlayer: ", this.state.currentPlayerIndex);
+
 		return (
 			<View style={styles.gameContainer}>
 				<Header onStart={this.onStart} onReset={this.onReset} />
@@ -244,8 +237,6 @@ class Game extends Component {
 const styles = StyleSheet.create({
 	gameContainer: {
 		flex: 1,
-		//justifyContent: "center",
-		//alignItems: "center",
 	},
 	gridContainer: {
 		flexDirection: "row",
@@ -256,11 +247,9 @@ const styles = StyleSheet.create({
 	bottomContainer: {
 		flexDirection: "row",
 		alignItems: "center",
-		justifyContent: "space-between",
+		justifyContent: "space-evenly",
 		width: SCREEN_WIDTH,
-		marginTop: 10,
 		padding: 25,
-		backgroundColor: "yellow",
 	},
 
 	numberPlayersContainer: {

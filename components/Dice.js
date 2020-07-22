@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import { View, Text, StyleSheet } from "react-native";
+import React from "react";
+import { View, StyleSheet } from "react-native";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { Button } from "react-native-elements";
 

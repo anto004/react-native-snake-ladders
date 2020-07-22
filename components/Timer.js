@@ -1,8 +1,7 @@
-import React, { Component } from "react";
+import React from "react";
 import { View, StyleSheet } from "react-native";
-import { Button, Text } from "react-native-elements";
+import { Text } from "react-native-elements";
 
-// Todo: Create reusable buttons
 function Timer({ seconds }) {
 	return (
 		<View style={styles.timerContainer}>

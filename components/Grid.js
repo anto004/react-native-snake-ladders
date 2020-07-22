@@ -65,7 +65,7 @@ function Grid({ grid }) {
 const styles = StyleSheet.create({
 	gridContainer: {
 		width: 300,
-		margin: 5,
+		marginTop: 5,
 		marginRight: 10,
 		marginLeft: 10,
 		backgroundColor: "white",
@@ -80,7 +80,6 @@ const styles = StyleSheet.create({
 		flex: 1,
 		height: 60,
 		borderWidth: 1,
-		backgroundColor: "purple",
 	},
 	cellPlayerContainer: {
 		flexDirection: "row",
