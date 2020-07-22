@@ -1,0 +1,38 @@
+{
+  "files": {
+    "app.js": "/react-native-snake-ladders/static/js/app.d87e3221.chunk.js",
+    "app.js.map": "/react-native-snake-ladders/static/js/app.d87e3221.chunk.js.map",
+    "runtime~app.js": "/react-native-snake-ladders/static/js/runtime~app.14cee608.js",
+    "runtime~app.js.map": "/react-native-snake-ladders/static/js/runtime~app.14cee608.js.map",
+    "static/js/2.dc2a3a61.chunk.js": "/react-native-snake-ladders/static/js/2.dc2a3a61.chunk.js",
+    "static/js/2.dc2a3a61.chunk.js.map": "/react-native-snake-ladders/static/js/2.dc2a3a61.chunk.js.map",
+    "fonts/AntDesign.ttf": "/react-native-snake-ladders/./fonts/AntDesign.ttf",
+    "fonts/Entypo.ttf": "/react-native-snake-ladders/./fonts/Entypo.ttf",
+    "fonts/Feather.ttf": "/react-native-snake-ladders/./fonts/Feather.ttf",
+    "fonts/FontAwesome.ttf": "/react-native-snake-ladders/./fonts/FontAwesome.ttf",
+    "fonts/FontAwesome5_Brands.ttf": "/react-native-snake-ladders/./fonts/FontAwesome5_Brands.ttf",
+    "fonts/FontAwesome5_Solid.ttf": "/react-native-snake-ladders/./fonts/FontAwesome5_Solid.ttf",
+    "fonts/Fontisto.ttf": "/react-native-snake-ladders/./fonts/Fontisto.ttf",
+    "fonts/Foundation.ttf": "/react-native-snake-ladders/./fonts/Foundation.ttf",
+    "fonts/Ionicons.ttf": "/react-native-snake-ladders/./fonts/Ionicons.ttf",
+    "fonts/MaterialCommunityIcons.ttf": "/react-native-snake-ladders/./fonts/MaterialCommunityIcons.ttf",
+    "fonts/MaterialIcons.ttf": "/react-native-snake-ladders/./fonts/MaterialIcons.ttf",
+    "fonts/SimpleLineIcons.ttf": "/react-native-snake-ladders/./fonts/SimpleLineIcons.ttf",
+    "favicon-16.png": "/react-native-snake-ladders/favicon-16.png",
+    "favicon-32.png": "/react-native-snake-ladders/favicon-32.png",
+    "favicon.ico": "/react-native-snake-ladders/favicon.ico",
+    "index.html": "/react-native-snake-ladders/index.html",
+    "manifest.json": "/react-native-snake-ladders/manifest.json",
+    "serve.json": "/react-native-snake-ladders/serve.json",
+    "static/js/2.dc2a3a61.chunk.js.LICENSE.txt": "/react-native-snake-ladders/static/js/2.dc2a3a61.chunk.js.LICENSE.txt",
+    "static/media/bell.png": "/react-native-snake-ladders/static/media/bell.cf04af27.png",
+    "static/media/heart.png": "/react-native-snake-ladders/static/media/heart.23b5c2c0.png",
+    "static/media/rocket.png": "/react-native-snake-ladders/static/media/rocket.d2f3bf41.png",
+    "static/media/star.png": "/react-native-snake-ladders/static/media/star.69c71386.png"
+  },
+  "entrypoints": [
+    "static/js/runtime~app.14cee608.js",
+    "static/js/2.dc2a3a61.chunk.js",
+    "static/js/app.d87e3221.chunk.js"
+  ]
+}
