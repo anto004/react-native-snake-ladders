@@ -1,4 +1,5 @@
 # react-native-snake-ladders
+
 Snake and ladders game mobile app
 
 Web build of the mobile app:
@@ -16,3 +17,7 @@ Web build of the mobile app:
 
 > Note:
 > Clear browser cache for the updated app
+
+#### Screenshot
+
+![screenshot](/images/Screenshot.jpg)
