@@ -1,11 +1,11 @@
 {
   "files": {
-    "app.js": "/react-native-snake-ladders/static/js/app.5fc79c79.chunk.js",
-    "app.js.map": "/react-native-snake-ladders/static/js/app.5fc79c79.chunk.js.map",
+    "app.js": "/react-native-snake-ladders/static/js/app.8c7eb1e0.chunk.js",
+    "app.js.map": "/react-native-snake-ladders/static/js/app.8c7eb1e0.chunk.js.map",
     "runtime~app.js": "/react-native-snake-ladders/static/js/runtime~app.14cee608.js",
     "runtime~app.js.map": "/react-native-snake-ladders/static/js/runtime~app.14cee608.js.map",
-    "static/js/2.fe7e21b5.chunk.js": "/react-native-snake-ladders/static/js/2.fe7e21b5.chunk.js",
-    "static/js/2.fe7e21b5.chunk.js.map": "/react-native-snake-ladders/static/js/2.fe7e21b5.chunk.js.map",
+    "static/js/2.3f3b0a78.chunk.js": "/react-native-snake-ladders/static/js/2.3f3b0a78.chunk.js",
+    "static/js/2.3f3b0a78.chunk.js.map": "/react-native-snake-ladders/static/js/2.3f3b0a78.chunk.js.map",
     "fonts/AntDesign.ttf": "/react-native-snake-ladders/./fonts/AntDesign.ttf",
     "fonts/Entypo.ttf": "/react-native-snake-ladders/./fonts/Entypo.ttf",
     "fonts/Feather.ttf": "/react-native-snake-ladders/./fonts/Feather.ttf",
@@ -24,7 +24,7 @@
     "index.html": "/react-native-snake-ladders/index.html",
     "manifest.json": "/react-native-snake-ladders/manifest.json",
     "serve.json": "/react-native-snake-ladders/serve.json",
-    "static/js/2.fe7e21b5.chunk.js.LICENSE.txt": "/react-native-snake-ladders/static/js/2.fe7e21b5.chunk.js.LICENSE.txt",
+    "static/js/2.3f3b0a78.chunk.js.LICENSE.txt": "/react-native-snake-ladders/static/js/2.3f3b0a78.chunk.js.LICENSE.txt",
     "static/media/bell.png": "/react-native-snake-ladders/static/media/bell.cf04af27.png",
     "static/media/heart.png": "/react-native-snake-ladders/static/media/heart.23b5c2c0.png",
     "static/media/rocket.png": "/react-native-snake-ladders/static/media/rocket.d2f3bf41.png",
@@ -32,7 +32,7 @@
   },
   "entrypoints": [
     "static/js/runtime~app.14cee608.js",
-    "static/js/2.fe7e21b5.chunk.js",
-    "static/js/app.5fc79c79.chunk.js"
+    "static/js/2.3f3b0a78.chunk.js",
+    "static/js/app.8c7eb1e0.chunk.js"
   ]
 }
