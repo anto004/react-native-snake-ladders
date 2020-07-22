@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/react-native-snake-ladders/precache-manifest.b31e2d2291ea355d1c2d8a7933dbd6b0.js"
+  "/react-native-snake-ladders/precache-manifest.31e10d237363ba299c91707470514587.js"
 );
 
 workbox.skipWaiting();

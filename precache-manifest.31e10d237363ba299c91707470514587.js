@@ -1,15 +1,15 @@
 self.__precacheManifest = [
   {
-    "revision": "4cf75cb260446a2f9513",
-    "url": "/react-native-snake-ladders/static/js/app.d87e3221.chunk.js"
+    "revision": "fc375b18670433439a39",
+    "url": "/react-native-snake-ladders/static/js/app.5fc79c79.chunk.js"
   },
   {
     "revision": "f631b26884aa3f84376c",
     "url": "/react-native-snake-ladders/static/js/runtime~app.14cee608.js"
   },
   {
-    "revision": "7de3115dc068cbee2cca",
-    "url": "/react-native-snake-ladders/static/js/2.dc2a3a61.chunk.js"
+    "revision": "2dce44a2695fd1974ea3",
+    "url": "/react-native-snake-ladders/static/js/2.fe7e21b5.chunk.js"
   },
   {
     "revision": "004c2bbb035d8d06bb830efc4673c886",
@@ -80,7 +80,7 @@ self.__precacheManifest = [
     "url": "/react-native-snake-ladders/expo-service-worker.js"
   },
   {
-    "revision": "0b30ac158cb553f2f93a9c6a75908a36",
+    "revision": "6880c81b5bb6f3029f7e1b9d93e65a20",
     "url": "/react-native-snake-ladders/index.html"
   },
   {
@@ -93,7 +93,7 @@ self.__precacheManifest = [
   },
   {
     "revision": "d9b8742bc2250bfdfd710941e991e371",
-    "url": "/react-native-snake-ladders/static/js/2.dc2a3a61.chunk.js.LICENSE.txt"
+    "url": "/react-native-snake-ladders/static/js/2.fe7e21b5.chunk.js.LICENSE.txt"
   },
   {
     "revision": "521f8c844d3af13c3d20ba01b2fc5274",
