@@ -100,7 +100,7 @@ class Game extends Component {
 		const currentPlayerObj = this.getCurrentPlayer();
 		const currentPlayer = currentPlayerObj.player;
 		const fromPosition = currentPlayerObj.position;
-		const toPosition = fromPosition + dice;
+		let toPosition = fromPosition + dice;
 
 		if (toPosition > 15) {
 			return;
@@ -115,6 +115,16 @@ class Game extends Component {
 
 			//Stop Timer
 			timer.clearInterval(this);
+		}
+
+		//Move up the ladder
+		if (fromPosition === 7) {
+			toPosition = 12;
+		}
+
+		//Swallowed by snake
+		if (fromPosition === 14) {
+			toPosition = 3;
 		}
 
 		if (fromPosition === 0) {

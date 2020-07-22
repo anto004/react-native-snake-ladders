@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { View, StyleSheet } from "react-native";
 import { Text } from "react-native-elements";
 import { connect } from "react-redux";
+import { FontAwesome5, FontAwesome } from "@expo/vector-icons";
 import Player from "./Player";
 import { RED, GREEN, BLUE, YELLOW } from "../reducers/index";
 
@@ -36,9 +37,18 @@ function Row({ row }) {
 function Cell({ column }) {
 	return (
 		<View key={column.id} style={styles.cellContainer}>
-			<View style={styles.cellPlayerContainer}>
-				<RenderPlayers column={column} />
+			<View style={styles.iconWithPlayersStyle}>
+				{column.id === 14 && (
+					<FontAwesome5 name="stumbleupon" size={15} color="black" />
+				)}
+				{column.id === 7 && (
+					<FontAwesome name="level-up" size={15} color="black" />
+				)}
+				<View style={styles.cellPlayerContainer}>
+					<RenderPlayers column={column} />
+				</View>
 			</View>
+
 			<View style={styles.cellIdStyle}>
 				{column.id === 0 && <Text h4>Start</Text>}
 				{column.id === 15 && <Text h4>Win</Text>}
@@ -83,7 +93,9 @@ const styles = StyleSheet.create({
 	},
 	cellPlayerContainer: {
 		flexDirection: "row",
-		justifyContent: "flex-end",
+	},
+	iconWithPlayersStyle: {
+		flexDirection: "row",
 	},
 	cellIdStyle: {
 		flex: 1,
