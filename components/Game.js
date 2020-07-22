@@ -106,6 +106,16 @@ class Game extends Component {
 			return;
 		}
 
+		//Move up the ladder
+		if (fromPosition === 7) {
+			toPosition = 12;
+		}
+
+		//Swallowed by snake
+		if (fromPosition === 14) {
+			toPosition = 3;
+		}
+
 		// We have a winner
 		if (toPosition === 15) {
 			this.setState({
@@ -115,16 +125,6 @@ class Game extends Component {
 
 			//Stop Timer
 			timer.clearInterval(this);
-		}
-
-		//Move up the ladder
-		if (fromPosition === 7) {
-			toPosition = 12;
-		}
-
-		//Swallowed by snake
-		if (fromPosition === 14) {
-			toPosition = 3;
 		}
 
 		if (fromPosition === 0) {
