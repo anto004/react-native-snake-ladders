@@ -3,3 +3,19 @@ Snake and ladders game mobile app
 
 Web build of the mobile app:
 [https://anto004.github.io/react-native-snake-ladders/index.html](https://anto004.github.io/react-native-snake-ladders/index.html)
+
+### Run Project
+- Clone project repo
+- Install Dependencies
+
+		```yarn install```
+		
+- Run project
+
+		```yarn android```
+  or
+	  ```yarn web ```
+  
+
+> Note:
+	> Clear browser cache for the updated app
