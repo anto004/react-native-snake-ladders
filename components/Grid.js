@@ -40,34 +40,34 @@ function Cell({ column }) {
 				<RenderPlayers column={column} />
 			</View>
 			<View style={styles.cellIdStyle}>
-				<Text h4 style={styles.textIdStyle}>
-					{column.id}
-				</Text>
+				{column.id === 0 && <Text h4>Start</Text>}
+				{column.id === 15 && <Text h4>Win</Text>}
+				{column.id !== 0 && column.id !== 15 && (
+					<Text h4 style={styles.textIdStyle}>
+						{column.id}
+					</Text>
+				)}
 			</View>
 		</View>
 	);
 }
 
-class Grid extends Component {
-	constructor(props) {
-		super(props);
-	}
-
-	render() {
-		const { grid } = this.props;
-		return (
-			<View style={styles.gridContainer}>
-				{grid.map((row, index) => (
-					<Row key={index} row={row} />
-				))}
-			</View>
-		);
-	}
+function Grid({ grid }) {
+	return (
+		<View style={styles.gridContainer}>
+			{grid.map((row, index) => (
+				<Row key={index} row={row} />
+			))}
+		</View>
+	);
 }
 
 const styles = StyleSheet.create({
 	gridContainer: {
 		width: 300,
+		margin: 5,
+		marginRight: 10,
+		marginLeft: 10,
 		backgroundColor: "white",
 	},
 	rowStyle: {
@@ -96,6 +96,7 @@ const styles = StyleSheet.create({
 		margin: 0,
 	},
 });
+
 const mapStateToProps = (state) => {
 	return {
 		grid: state,

@@ -9,10 +9,12 @@ import {
 } from "react-native";
 import { connect } from "react-redux";
 import { Text } from "react-native-elements";
+import timer from "react-native-timer";
 import Grid from "./Grid";
 import Dice from "./Dice";
 import Players from "./Players";
 import Header from "./Header";
+import Timer from "./Timer";
 import { movePlayer, movePlayerToStart, resetPlayers } from "../actions";
 import { getRandomInt } from "../utils/random";
 import { GREEN, RED } from "../reducers";
@@ -32,7 +34,12 @@ class Game extends Component {
 			players: [{ player: "red", position: 0 }],
 			currentPlayerIndex: 0,
 			playersTurn: "",
+			seconds: 5,
 		};
+	}
+
+	componentWillUnmount() {
+		timer.clearInterval(this);
 	}
 
 	onChangePlayerNumbers = (n) => {
@@ -57,10 +64,10 @@ class Game extends Component {
 		this.setState({ dice: random });
 
 		this.moveCurrentPlayer(random);
-	};
 
-	// TODO:
-	// Check winner reaches exactly cell id 15
+		// Reset clock
+		this.setState({ seconds: 5 });
+	};
 
 	moveCurrentPlayer = (dice) => {
 		const { players, currentPlayerIndex } = this.state;
@@ -78,6 +85,9 @@ class Game extends Component {
 
 		if (toPosition === 15) {
 			this.setState({ winner: currentPlayer });
+
+			//Stop Timer
+			timer.clearInterval(this);
 		}
 
 		if (fromPosition === 0) {
@@ -147,8 +157,21 @@ class Game extends Component {
 		// Red is the first player
 		this.setState({ playersTurn: RED });
 
-		// Pop item when timer runs out
-		// Call clearTimout when a player moves before timer runs out
+		timer.setInterval(
+			this,
+			"displaySeconds",
+			() => {
+				if (this.state.seconds === 0) {
+					// Player ran out of time
+					// Roll dice explicitly
+					this.rollDice();
+					this.setState({ seconds: 5 });
+					return;
+				}
+				this.setState({ seconds: this.state.seconds - 1 });
+			},
+			1000
+		);
 	};
 
 	onReset = () => {
@@ -162,6 +185,8 @@ class Game extends Component {
 			players: [{ player: "red", position: 0 }],
 			playersTurn: "",
 		});
+
+		timer.clearInterval(this);
 	};
 
 	componentDidUpdate(prevProps, prevState) {
@@ -173,7 +198,14 @@ class Game extends Component {
 	}
 
 	render() {
-		const { players, dice, numberPlayers, playersTurn, winner } = this.state;
+		const {
+			players,
+			dice,
+			numberPlayers,
+			playersTurn,
+			winner,
+			seconds,
+		} = this.state;
 		console.log("currentPlayer: ", this.state.currentPlayerIndex);
 		return (
 			<View style={styles.gameContainer}>
@@ -181,7 +213,7 @@ class Game extends Component {
 				<View>
 					<View style={styles.numberPlayersContainer}>
 						<Text style={styles.numberPlayerTextStyle}>
-							Select Number of Players(1-4)
+							Select Number of Players(2-4)
 						</Text>
 						<TextInput
 							style={styles.inputStyle}
@@ -192,6 +224,7 @@ class Game extends Component {
 				</View>
 				<View style={styles.gridContainer}>
 					<Grid />
+					<Timer seconds={seconds} />
 				</View>
 
 				<View style={styles.bottomContainer}>
@@ -215,6 +248,7 @@ const styles = StyleSheet.create({
 		//alignItems: "center",
 	},
 	gridContainer: {
+		flexDirection: "row",
 		alignItems: "center",
 		justifyContent: "center",
 		margin: 10,
