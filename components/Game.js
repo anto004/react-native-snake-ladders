@@ -1,5 +1,11 @@
 import React, { Component } from "react";
-import { View, StyleSheet, Dimensions, TextInput } from "react-native";
+import {
+	View,
+	StyleSheet,
+	Dimensions,
+	TextInput,
+	ToastAndroid,
+} from "react-native";
 import { connect } from "react-redux";
 import { Text } from "react-native-elements";
 import timer from "react-native-timer";
@@ -28,6 +34,7 @@ class Game extends Component {
 			currentPlayerIndex: 0,
 			playersTurn: "",
 			seconds: 5,
+			gameOnGoing: false,
 		};
 	}
 
@@ -53,8 +60,14 @@ class Game extends Component {
 	};
 
 	rollDice = () => {
+		const { gameOnGoing } = this.state;
 		const random = getRandomInt(DICE_MAX);
 		this.setState({ dice: random });
+
+		if (!gameOnGoing) {
+			ToastAndroid.show("Press start", ToastAndroid.SHORT);
+			return;
+		}
 
 		this.moveCurrentPlayer(random);
 
@@ -138,8 +151,13 @@ class Game extends Component {
 	}
 
 	onStart = () => {
-		const { players, numberPlayers } = this.state;
+		const { players, numberPlayers, gameOnGoing } = this.state;
 		const { dispatchMovePlayerToStart } = this.props;
+
+		if (gameOnGoing) {
+			ToastAndroid.show("A Game is in progress", ToastAndroid.SHORT);
+			return;
+		}
 
 		// Place all players on Start cell
 		players.map((player) => {
@@ -148,6 +166,8 @@ class Game extends Component {
 
 		// Red is the first player
 		this.setState({ playersTurn: RED });
+
+		this.setState({ gameOnGoing: true });
 
 		timer.setInterval(
 			this,
@@ -176,6 +196,7 @@ class Game extends Component {
 			numberPlayers: 1,
 			players: [{ player: "red", position: 0 }],
 			playersTurn: "",
+			gameOnGoing: false,
 		});
 
 		timer.clearInterval(this);
