@@ -1,7 +1,7 @@
 {
   "files": {
-    "app.js": "/react-native-snake-ladders/static/js/app.8c7eb1e0.chunk.js",
-    "app.js.map": "/react-native-snake-ladders/static/js/app.8c7eb1e0.chunk.js.map",
+    "app.js": "/react-native-snake-ladders/static/js/app.80cd1a7a.chunk.js",
+    "app.js.map": "/react-native-snake-ladders/static/js/app.80cd1a7a.chunk.js.map",
     "runtime~app.js": "/react-native-snake-ladders/static/js/runtime~app.14cee608.js",
     "runtime~app.js.map": "/react-native-snake-ladders/static/js/runtime~app.14cee608.js.map",
     "static/js/2.3f3b0a78.chunk.js": "/react-native-snake-ladders/static/js/2.3f3b0a78.chunk.js",
@@ -33,6 +33,6 @@
   "entrypoints": [
     "static/js/runtime~app.14cee608.js",
     "static/js/2.3f3b0a78.chunk.js",
-    "static/js/app.8c7eb1e0.chunk.js"
+    "static/js/app.80cd1a7a.chunk.js"
   ]
 }

@@ -1,7 +1,7 @@
 self.__precacheManifest = [
   {
-    "revision": "10ef7765ef7422e535bf",
-    "url": "/react-native-snake-ladders/static/js/app.8c7eb1e0.chunk.js"
+    "revision": "24a0bad1712c168011c1",
+    "url": "/react-native-snake-ladders/static/js/app.80cd1a7a.chunk.js"
   },
   {
     "revision": "f631b26884aa3f84376c",
@@ -80,7 +80,7 @@ self.__precacheManifest = [
     "url": "/react-native-snake-ladders/expo-service-worker.js"
   },
   {
-    "revision": "a0efe61fe623e46ecbc750c440060fab",
+    "revision": "c6e611af4cff5fabfcbb0386fb0b8258",
     "url": "/react-native-snake-ladders/index.html"
   },
   {
