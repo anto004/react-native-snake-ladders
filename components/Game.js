@@ -67,7 +67,6 @@ class Game extends Component {
 		const { dispatchMovePlayer, dispatchMovePlayerToStart } = this.props;
 
 		const currentPlayerObj = this.getCurrentPlayer();
-		console.log("currentPlayerObj", currentPlayerObj);
 		const currentPlayer = currentPlayerObj.player;
 		const fromPosition = currentPlayerObj.position;
 		const toPosition = fromPosition + dice;
