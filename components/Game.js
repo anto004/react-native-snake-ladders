@@ -47,7 +47,12 @@ class Game extends Component {
 	}
 
 	onChangePlayerNumbers = (n) => {
+		const { gameOnGoing } = this.state;
 		const copy = [];
+
+		if (gameOnGoing) {
+			return;
+		}
 
 		if (!Number.isNaN(Number(n)) && Number(n) < 5) {
 			this.setState({ numberPlayers: n });
