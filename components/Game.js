@@ -28,13 +28,17 @@ class Game extends Component {
 
 		this.state = {
 			dice: 3,
-			numberPlayers: 1,
+			numberPlayers: 2,
 			winner: "",
-			players: [{ player: "red", position: 0 }],
+			players: [
+				{ player: "red", position: 0 },
+				{ player: "green", position: 0 },
+			],
 			currentPlayerIndex: 0,
 			playersTurn: "",
 			seconds: 5,
 			gameOnGoing: false,
+			gameOver: false,
 		};
 	}
 
@@ -44,6 +48,7 @@ class Game extends Component {
 
 	onChangePlayerNumbers = (n) => {
 		const copy = [];
+
 		if (!Number.isNaN(Number(n)) && Number(n) < 5) {
 			this.setState({ numberPlayers: n });
 
@@ -60,12 +65,20 @@ class Game extends Component {
 	};
 
 	rollDice = () => {
-		const { gameOnGoing } = this.state;
+		const { gameOnGoing, gameOver } = this.state;
 		const random = getRandomInt(DICE_MAX);
 		this.setState({ dice: random });
 
 		if (!gameOnGoing) {
 			ToastAndroid.show("Press start", ToastAndroid.SHORT);
+			return;
+		}
+
+		if (gameOver) {
+			ToastAndroid.show(
+				"Game Over! Reset and Start New Game",
+				ToastAndroid.SHORT
+			);
 			return;
 		}
 
@@ -88,8 +101,12 @@ class Game extends Component {
 			return;
 		}
 
+		// We have a winner
 		if (toPosition === 15) {
-			this.setState({ winner: currentPlayer });
+			this.setState({
+				winner: currentPlayer,
+				gameOver: true,
+			});
 
 			//Stop Timer
 			timer.clearInterval(this);
@@ -193,10 +210,18 @@ class Game extends Component {
 		dispatchResetPlayers();
 
 		this.setState({
-			numberPlayers: 1,
-			players: [{ player: "red", position: 0 }],
+			dice: 3,
+			numberPlayers: 2,
+			winner: "",
+			players: [
+				{ player: "red", position: 0 },
+				{ player: "green", position: 0 },
+			],
+			currentPlayerIndex: 0,
 			playersTurn: "",
+			seconds: 5,
 			gameOnGoing: false,
+			gameOver: false,
 		});
 
 		timer.clearInterval(this);
